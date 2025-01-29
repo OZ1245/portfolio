@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
 
       - name: Copy repository contents via scp
         uses: appleboy/scp-action@v0.1.4
@@ -19,14 +19,16 @@ jobs:
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.DEPLOY_KEY }}
         with:
-          source: "./dist/spa"
+          source: "./dist/spa/*"
           target: "/home/${{ secrets.USERNAME }}/projects/portfolio/www/html"
+          rm: true
+          overwrite: true
 
       - name: Executing remote command
         uses: appleboy/ssh-action@v0.1.4
         with:
           host: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PORT: ${{ secrets.PORT }}
-          KEY: ${{ secrets.DEPLOY_KEY }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.DEPLOY_KEY }}
           script: ls
