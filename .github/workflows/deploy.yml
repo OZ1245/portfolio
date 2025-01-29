@@ -20,7 +20,7 @@ jobs:
           KEY: ${{ secrets.DEPLOY_KEY }}
         with:
           source: "dist"
-          target: "/home/bnu/projects/portfolio/www/html"
+          target: "/home/${{ secrets.USERNAME }}/projects/portfolio/www/html"
 
       - name: Executing remote command
         uses: appleboy/ssh-action@v0.1.4
