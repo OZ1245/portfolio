@@ -18,7 +18,7 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY }}
           source: "dist/spa/*"
           target: "/home/${{ secrets.USERNAME }}/projects/portfolio/www/html"
-          strip_components: 2,
+          strip_components: 2
           rm: true
           overwrite: true
 
