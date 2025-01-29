@@ -16,7 +16,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.DEPLOY_KEY }}
-          source: "./dist/spa/*"
+          source: "!dist/spa/*"
           target: "/home/${{ secrets.USERNAME }}/projects/portfolio/www/html"
           rm: true
           overwrite: true
